@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "travel-booth-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

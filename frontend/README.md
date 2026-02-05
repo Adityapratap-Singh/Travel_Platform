@@ -1,6 +1,6 @@
-# Travel Platform - Frontend Client
+# Travel Booth - Frontend Client
 
-The frontend application for the Travel Platform, built with React, TypeScript, and Vite. It features a responsive UI, interactive maps, and role-specific dashboards.
+The frontend application for the Travel Booth, built with React, TypeScript, and Vite. It features a responsive UI, interactive maps, and role-specific dashboards.
 
 ## 🛠 Tech Stack
 

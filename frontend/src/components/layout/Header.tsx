@@ -59,7 +59,7 @@ export function Header() {
               "text-xl font-bold tracking-tight transition-colors duration-300",
               showBackground ? "text-gray-900" : "text-white"
             )}>
-              WanderLust
+              Travel Booth
             </span>
           </Link>
 

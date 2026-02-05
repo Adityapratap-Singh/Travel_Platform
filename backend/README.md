@@ -1,6 +1,6 @@
-# Travel Platform - Backend API
+# Travel Booth - Backend API
 
-The backend API for the Travel Platform, built with Node.js, Express, and MongoDB. It handles authentication, data management, and integrations with external services like Cloudinary and Google AI.
+The backend API for the Travel Booth, built with Node.js, Express, and MongoDB. It handles authentication, data management, and integrations with external services like Cloudinary and Google AI.
 
 ## 🛠 Tech Stack
 

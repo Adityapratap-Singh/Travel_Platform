@@ -1,4 +1,4 @@
-# Travel Platform
+# Travel Booth
 
 A comprehensive travel management platform connecting tourists, agents, guides, and hotels. This project is a full-stack application built with the MERN stack (MongoDB, Express, React, Node.js).
 

@@ -12,7 +12,7 @@ export function About() {
               We Help You See the World Differently
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              At WanderLust, we believe travel is more than just visiting a place—it's about connecting with cultures, people, and yourself.
+              At Travel Booth, we believe travel is more than just visiting a place—it's about connecting with cultures, people, and yourself.
             </p>
             <div className="flex gap-4">
               <Button size="lg">Join Our Team</Button>
