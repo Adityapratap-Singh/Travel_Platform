@@ -1,5 +1,6 @@
 const Destination = require('../models/Destination');
 const osmService = require('../services/osmService');
+const aiService = require('../services/aiService');
 
 // Helper: Get Current Season
 const getCurrentSeason = () => {
@@ -99,9 +100,24 @@ exports.getDestinationById = async (req, res) => {
 };
 
 exports.createDestination = async (req, res) => {
+  console.log('createDestination called with body:', req.body);
   try {
+    let averageBudget = req.body.averageBudget;
+
+    // If budget is not provided, estimate it with AI
+    if (!averageBudget && req.body.name) {
+      console.log(`Estimating budget for ${req.body.name}...`);
+      try {
+        averageBudget = await aiService.estimateBudget(req.body.name, req.body.country);
+        console.log(`Estimated budget: ₹${averageBudget}`);
+      } catch (aiError) {
+        console.error('Error calling AI service:', aiError);
+      }
+    }
+
     const newDest = new Destination({
       ...req.body,
+      averageBudget: averageBudget || 0,
       id: Date.now().toString(), // Simple unique ID
       verified: false, // Requires admin approval
       createdBy: req.user ? req.user._id : null
