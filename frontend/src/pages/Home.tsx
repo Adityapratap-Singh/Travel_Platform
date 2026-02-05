@@ -93,7 +93,7 @@ export function Home() {
             <span className="text-sm font-medium">New Adventures Added Weekly</span>
           </div>
           
-          <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-in slide-in-from-bottom-5 duration-700">
+          <h1 className="text-4xl text-[#F5F5DC] md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-in slide-in-from-bottom-5 duration-700">
             Don't Just See the World.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Experience It.</span>
           </h1>
@@ -271,7 +271,7 @@ export function Home() {
                   </div>
 
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-gray-900 shadow-lg z-10">
-                    From ${dest.price}
+                    From ₹{dest.price}
                   </div>
                   
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
@@ -344,7 +344,7 @@ export function Home() {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{exp.title}</h3>
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-                    <span className="text-2xl font-bold text-gray-900">${exp.price}</span>
+                    <span className="text-2xl font-bold text-gray-900">₹{exp.price}</span>
                     <Link to="/experiences">
                       <Button size="sm" variant="outline" className="group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:border-blue-200">
                         Book Now
