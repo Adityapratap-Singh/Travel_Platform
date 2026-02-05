@@ -3,7 +3,7 @@ const axios = require('axios');
 // Fallback images since OSM doesn't provide them
 const TRAVEL_IMAGES = [
   'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80', // Switzerland
-  'https://images.unsplash.com/photo-1499856871940-a09627c6dcf6?auto=format&fit=crop&w=800&q=80', // Paris
+  'https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?auto=format&fit=crop&w=800&q=80', // Paris (Replacement)
   'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80', // Paris 2
   'https://images.unsplash.com/photo-1500835556837-99ac94a94552?auto=format&fit=crop&w=800&q=80', // Travel generic
   'https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=800&q=80', // Travel generic
