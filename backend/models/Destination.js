@@ -36,6 +36,7 @@ const destinationSchema = new mongoose.Schema({
   description: String,
   fullDescription: String,
   price: Number,
+  averageBudget: { type: Number, default: 0 }, // AI-estimated daily budget in USD
   rating: Number,
   image: String,
   video: String,
