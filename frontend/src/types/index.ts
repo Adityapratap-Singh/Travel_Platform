@@ -5,6 +5,7 @@ export interface Destination {
   description: string;
   fullDescription: string;
   price: number;
+  averageBudget?: number; // AI-estimated daily budget
   rating: number;
   image: string;
   lat: number;
