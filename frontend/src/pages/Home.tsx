@@ -93,7 +93,7 @@ export function Home() {
             <span className="text-sm font-medium">New Adventures Added Weekly</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-in slide-in-from-bottom-5 duration-700">
+          <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-in slide-in-from-bottom-5 duration-700">
             Don't Just See the World.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Experience It.</span>
           </h1>
