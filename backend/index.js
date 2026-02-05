@@ -28,14 +28,25 @@ app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    // Allow any localhost
+    
+    // Allow any localhost (development)
     if (origin.startsWith('http://localhost')) {
       return callback(null, true);
     }
+    
     // Allow explicit FRONTEND_URL if set
     if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) {
       return callback(null, true);
     }
+
+    // Allow Vercel deployments (preview and production)
+    if (origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+
+    // Default: allow if matches FRONTEND_URL, otherwise deny
+    // BUT for debugging, let's log the blocked origin
+    console.log('CORS blocked origin:', origin);
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true

@@ -56,12 +56,17 @@ function App() {
     const checkServerStatus = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/health`);
-        if (response.ok) {
+        // If we get any response, the server is technically reachable (even if 404/500)
+        // Ideally it should be 200, but for "is up" check, any response is better than network error
+        if (response.status === 200) {
           setIsServerUp(true);
         } else {
-          setIsServerUp(false);
+          // If status is not 200, log it but maybe still consider it up if it's not a connection refused?
+          // For now, strict 200 check as per backend health endpoint
+          setIsServerUp(response.status === 200);
         }
       } catch (error) {
+        console.error("Health check failed:", error);
         setIsServerUp(false);
       } finally {
         setIsChecking(false);
@@ -71,8 +76,8 @@ function App() {
     // Check immediately
     checkServerStatus();
 
-    // Poll every 3 seconds
-    const interval = setInterval(checkServerStatus, 3000);
+    // Poll every 10 seconds (increased from 3s to reduce load)
+    const interval = setInterval(checkServerStatus, 10000);
 
     return () => clearInterval(interval);
   }, []);
