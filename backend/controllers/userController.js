@@ -1,50 +1,46 @@
+const asyncHandler = require('express-async-handler');
 const Destination = require('../models/Destination');
 const User = require('../models/User');
 
-exports.getGuides = async (req, res) => {
-  try {
-    const { city } = req.query;
-    let query = { role: 'guide' };
-    
-    if (city) {
-      // Case-insensitive partial match
-      query.location = { $regex: city, $options: 'i' };
-    }
-    
-    const guides = await User.find(query).select('-password');
-    res.json(guides);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+exports.getGuides = asyncHandler(async (req, res) => {
+  const { city } = req.query;
+  let query = { role: 'guide' };
+  
+  if (city) {
+    // Case-insensitive partial match
+    query.location = { $regex: city, $options: 'i' };
   }
-};
+  
+  const guides = await User.find(query).select('-password');
+  res.json(guides);
+});
 
-exports.getVisitedLocations = async (req, res) => {
-  try {
-    // Return full destination objects
-    const visited = await Destination.find({ id: { $in: req.user.visitedLocations } });
-    res.json(visited);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+exports.getVisitedLocations = asyncHandler(async (req, res) => {
+  // Return full destination objects
+  const visited = await Destination.find({ id: { $in: req.user.visitedLocations } });
+  res.json(visited);
+});
 
-exports.markVisited = async (req, res) => {
+exports.markVisited = asyncHandler(async (req, res) => {
   const { destinationId } = req.body;
-  try {
-    const user = await User.findById(req.user._id);
-    if (!user.visitedLocations.includes(destinationId)) {
-      user.visitedLocations.push(destinationId);
-      await user.save();
-    }
-    res.json(user.visitedLocations);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+  const user = await User.findById(req.user._id);
+  
+  if (!user) {
+    res.status(404);
+    throw new Error('User not found');
   }
-};
 
-exports.updateProfile = async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id);
+  if (!user.visitedLocations.includes(destinationId)) {
+    user.visitedLocations.push(destinationId);
+    await user.save();
+  }
+  res.json(user.visitedLocations);
+});
+
+exports.updateProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  
+  if (user) {
     if (req.body.name) user.name = req.body.name;
     if (req.body.email) user.email = req.body.email;
     if (req.body.avatar) user.avatar = req.body.avatar;
@@ -69,7 +65,8 @@ exports.updateProfile = async (req, res) => {
       languages: updatedUser.languages,
       visitedLocations: updatedUser.visitedLocations
     });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
   }
-};
+});
