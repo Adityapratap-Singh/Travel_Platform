@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Travel Platform - Frontend Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend application for the Travel Platform, built with React, TypeScript, and Vite. It features a responsive UI, interactive maps, and role-specific dashboards.
 
-Currently, two official plugins are available:
+## 🛠 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**: UI Library.
+- **Vite**: Build tool and dev server.
+- **TypeScript**: Static typing.
+- **Tailwind CSS**: Utility-first styling.
+- **React Router DOM**: Client-side routing.
+- **React Leaflet**: Interactive maps.
+- **Framer Motion**: UI animations.
+- **Lucide React**: Icon set.
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+- Node.js installed.
+- Backend server running (for full functionality).
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Environment Variables
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Create a `.env` file in the `frontend` root (optional, if you need custom API URLs):
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_API_URL=http://localhost:3000/api
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the App
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Start development server
+npm run dev
 ```
+The app will be available at `http://localhost:5173`.
+
+## 📂 Project Structure
+
+```
+frontend/
+├── src/
+│   ├── assets/        # Static assets (images, svgs)
+│   ├── components/    # Reusable UI components
+│   │   ├── features/  # Complex feature components (Map, AI, Weather)
+│   │   ├── layout/    # Header, Footer, Layout wrappers
+│   │   └── ui/        # Base UI elements (Button, Card, Badge)
+│   ├── context/       # React Context (Auth, Toast)
+│   ├── lib/           # Utilities and API helpers
+│   ├── pages/         # Application pages (Home, Dashboard, Login)
+│   ├── types/         # TypeScript type definitions
+│   ├── App.tsx        # Main App component with Routes
+│   └── main.tsx       # Entry point
+```
+
+## 🔑 Key Features
+
+### Role-Based Dashboards
+- **Tourist**: View bookings, planned trips, and recommendations.
+- **Agent**: Manage destinations and client bookings.
+- **Guide**: Manage experiences and schedule.
+- **Hotel**: Manage room availability and bookings.
+- **Admin**: System-wide oversight.
+
+### Interactive Map
+Located in `src/components/features/InteractiveMap.tsx`, this component uses Leaflet to display destinations and points of interest on an interactive map.
+
+### AI Assistant
+The `AiAssistant` component provides a chat interface for users to ask travel-related questions, powered by the backend AI service.
+
+## 📜 Scripts
+
+- `npm run dev`: Start the development server.
+- `npm run build`: Type-check and build for production.
+- `npm run lint`: Run ESLint to check code quality.
+- `npm run preview`: Preview the production build locally.
