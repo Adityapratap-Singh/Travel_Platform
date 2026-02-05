@@ -29,6 +29,7 @@ A comprehensive travel management platform connecting tourists, agents, guides, 
 - **Authentication**: JWT & Bcryptjs
 - **File Storage**: Cloudinary
 - **AI**: Google Generative AI SDK
+- **Testing**: Jest & Supertest
 
 ## 📂 Project Structure
 
@@ -52,12 +53,29 @@ cd backend
 npm install
 ```
 
-Create a `.env` file in the `backend` directory (see `backend/README.md` for details) and run the server:
+Set up your environment variables by copying the example file:
 
 ```bash
-# Start the server
-node index.js
+cp .env.example .env
+# Edit .env with your specific configuration (MongoDB URI, API Keys, etc.)
 ```
+
+Run the server:
+
+```bash
+# Development mode (with auto-reload)
+npm run dev
+
+# Production mode
+npm start
+```
+
+Run tests:
+
+```bash
+npm test
+```
+
 The server will run on `http://localhost:3000` (or your configured PORT).
 
 ### 2. Frontend Setup
@@ -66,6 +84,12 @@ Navigate to the frontend directory and install dependencies:
 ```bash
 cd frontend
 npm install
+```
+
+Set up your environment variables:
+
+```bash
+cp .env.example .env
 ```
 
 Run the development server:
