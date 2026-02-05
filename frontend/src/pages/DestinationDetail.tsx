@@ -220,6 +220,12 @@ export function DestinationDetail() {
                 <Sun className="w-5 h-5 mr-2" />
                 Best time: {destination.bestTime || destination.season}
               </div>
+              {(destination.averageBudget || destination.price > 0) && (
+                <div className="flex items-center bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                  <span className="font-bold mr-2">$</span>
+                  Avg. Budget: ${destination.averageBudget || destination.price} / day
+                </div>
+              )}
             </div>
 
             <Link to={`/plan-trip?search=${encodeURIComponent(destination.name)}`}>
