@@ -87,3 +87,9 @@ Contributions are welcome! Please check out the [Contribute](./frontend/src/page
 ## 📜 License
 
 This project is licensed under the ISC License.
+
+## ✍️ Author
+
+**Adityapratap Singh**
+
+This project is licensed under the ISC License.

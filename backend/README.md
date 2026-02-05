@@ -107,3 +107,7 @@ To populate the database with initial data:
 ```bash
 node seed.js
 ```
+
+## ✍️ Author
+
+**Adityapratap Singh**

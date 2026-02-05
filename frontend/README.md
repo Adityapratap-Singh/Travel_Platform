@@ -85,3 +85,7 @@ The `AiAssistant` component provides a chat interface for users to ask travel-re
 - `npm run build`: Type-check and build for production.
 - `npm run lint`: Run ESLint to check code quality.
 - `npm run preview`: Preview the production build locally.
+
+## ✍️ Author
+
+**Adityapratap Singh**
