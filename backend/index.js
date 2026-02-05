@@ -16,6 +16,7 @@ const uploadRoutes = require('./routes/uploadRoutes');
 const agentRoutes = require('./routes/agentRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const eventRoutes = require('./routes/eventRoutes');
+const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -60,6 +61,13 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+app.use(notFound);
+app.use(errorHandler);
+
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
